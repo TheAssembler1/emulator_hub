@@ -5,4 +5,4 @@ project(
   VERSION 1.0
   LANGUAGES C)
 
-add_executable(emulator_hub src/entry.c)
+add_executable(emulator_hub src/entry.c src/mem/mem.c)
