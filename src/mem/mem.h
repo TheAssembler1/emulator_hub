@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "../lwlog/lwlog.h"
+#include "lwlog/lwlog.h"
 #define HOST_ENDIANESS_IS_LITTLE(n) (*(char*)&n == 1)
 
 enum Endianess {

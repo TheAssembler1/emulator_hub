@@ -3,9 +3,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <unistd.h>
+#include <errno.h>
 
-#include "../../../lwlog/lwlog.h"
-#include "../../../mem/mem.h"
+#include "lwlog/lwlog.h"
+#include "mem/mem.h"
 
 struct Sharp_SM83_CPU_Registers{
     union{
@@ -45,15 +47,15 @@ struct Sharp_SM83_CPU_Registers{
 };
 
 struct Sharp_SM83_CPU {
-	struct Sharp_SM83_CPU_Registers regs;
-	struct Memory_Buffer* mem_buf;
+    bool running;
+    struct Sharp_SM83_CPU_Registers regs;
+    struct Memory_Buffer* mem_buf;
 };
 
 void sharp_sm83_cpu_init(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf);
 void sharp_sm83_cpu_destroy(struct Sharp_SM83_CPU* cpu);
-void sharp_sm83_cpu_cycle(struct Sharp_SM83_CPU* cpu, uint64_t cycles);
-bool sharp_sm83_fetch_opcode(struct Sharp_SM83_CPU* cpu, uint16_t* fetched_opcode);
-uint64_t sharp_sm83_exec_opcode(struct Sharp_SM83_CPU* cpu, uint16_t fetched_opcode, bool cb);
-
+void sharp_sm83_cpu_cycle(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint64_t cycles);
+bool sharp_sm83_fetch_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint8_t* fetched_opcode);
+uint64_t sharp_sm83_exec_opcode(struct Sharp_SM83_CPU* cpu, uint8_t fetched_opcode, bool cb);
 
 #endif

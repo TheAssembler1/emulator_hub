@@ -1,8 +1,17 @@
 cmake_minimum_required(VERSION 3.1...3.29)
 
-project(
-  emulator_hub 
-  VERSION 1.0
-  LANGUAGES C)
+set(PROJECT_NAME emulator_hub)
 
-add_executable(emulator_hub src/entry.c src/mem/mem.c src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c)
+project(
+    ${PROJECT_NAME}
+    VERSION 1.0
+    LANGUAGES C)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/rom DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+add_executable(${PROJECT_NAME} src/entry.c
+                            src/mem/mem.c 
+                            src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c
+                            src/dev_manager/gameboy_dm_01/gameboy_dmg_01.c)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)

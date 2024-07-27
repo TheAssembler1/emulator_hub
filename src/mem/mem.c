@@ -1,11 +1,6 @@
 #include "mem.h"
 
 void memory_buffer_init(struct Memory_Buffer* mem_buf, uint64_t mem_size, enum Endianess end) {
-    if(mem_size < 0) {
-        lwlog_emerg("invalid mem_size: %lu", mem_size);
-        return;
-    }
-
     mem_buf->buf = (uint8_t*)malloc(mem_size);
     memset(mem_buf->buf, 0, mem_size);
     mem_buf->end = end;
@@ -33,10 +28,6 @@ static bool memory_buffer_is_native(enum Endianess mem_buf_end) {
 }
 
 static void swap_bytes(uint32_t data_num_bytes, uint8_t* data) {
-    if(data_num_bytes > 8 || data_num_bytes < 2) {
-        lwlog_err("invalid data_num_bytes: %d", data_num_bytes);
-    }
-
     uint8_t* start_byte = data;
     uint8_t* end_byte = &(data[data_num_bytes - 1]);
 
