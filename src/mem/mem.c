@@ -7,6 +7,7 @@ void memory_buffer_init(struct Memory_Buffer* mem_buf, uint64_t mem_size, enum E
     }
 
     mem_buf->buf = (uint8_t*)malloc(mem_size);
+    memset(mem_buf->buf, 0, mem_size);
     mem_buf->end = end;
 }
 

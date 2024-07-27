@@ -5,4 +5,4 @@ project(
   VERSION 1.0
   LANGUAGES C)
 
-add_executable(emulator_hub src/entry.c src/mem/mem.c)
+add_executable(emulator_hub src/entry.c src/mem/mem.c src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c)
