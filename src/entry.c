@@ -1,5 +1,5 @@
 #include "lwlog/lwlog.h"
-#include "dev_manager/gameboy_dm_01/gameboy_dmg_01.h"
+#include "dev_manager/gameboy_dmg_01/gameboy_dmg_01.h"
 
 #define LOG_COLOR (1)
 #define LOG_LEVEL (7)

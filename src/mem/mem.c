@@ -10,78 +10,32 @@ void memory_buffer_destroy(struct Memory_Buffer* mem_buf) {
     free(mem_buf->buf);
 }
 
-static bool memory_buffer_is_native(enum Endianess mem_buf_end) {
-    enum Endianess my_end; 
-    int n = 1; 
-    
-    if(HOST_ENDIANESS_IS_LITTLE(n)) { 
-        my_end = LITTLE_ENDIANESS; 
-    } else { 
-        my_end = BIG_ENDIANESS; 
-    } 
-
-    if(my_end == mem_buf_end) { 
-        return true;
-    } 
-
-    return false;
-}
-
-static void swap_bytes(uint32_t data_num_bytes, uint8_t* data) {
-    uint8_t* start_byte = data;
-    uint8_t* end_byte = &(data[data_num_bytes - 1]);
-
-    while(start_byte <= end_byte) {
-        uint8_t temp = *start_byte;
-        *start_byte = *end_byte;
-        *end_byte = temp;
-
-        start_byte++;
-        end_byte--;
-    }
-}
-
 void memory_write_uint8_t(struct Memory_Buffer* mem_buf, uint64_t addr, uint8_t data) {
-    mem_buf->end, mem_buf->buf[addr] = data;
+    mem_buf->buf[addr] = data;
 }
 
 void memory_write_uint16_t(struct Memory_Buffer* mem_buf, uint64_t addr, uint16_t data) {
-    if(!memory_buffer_is_native(mem_buf->end)) {
-       swap_bytes(sizeof(uint16_t), (uint8_t*)&data); 
+    if (mem_buf->end == LITTLE_ENDIANESS) {
+        // Write in little-endian order
+        mem_buf->buf[addr] = (uint8_t)(data & 0x00FF);        // Lower 8 bits
+        mem_buf->buf[addr + 1] = (uint8_t)((data & 0xFF00) >> 8); // Upper 8 bits
+    } else {
+        // Write in big-endian order
+        mem_buf->buf[addr + 1] = (uint8_t)(data & 0x00FF);     // Lower 8 bits
+        mem_buf->buf[addr] = (uint8_t)((data & 0xFF00) >> 8);  // Upper 8 bits
     }
-
-    ((uint16_t*)mem_buf->buf)[addr] = data;
 }
 
-void memory_write_uint32_t(struct Memory_Buffer* mem_buf, uint64_t addr, uint32_t data) {
-    if(!memory_buffer_is_native(mem_buf->end)) {
-       swap_bytes(sizeof(uint32_t), (uint8_t*)&data); 
-    }
 
-
-    ((uint32_t*)mem_buf->buf)[addr] = data;
-}
-
-void memory_write_uint64_t(struct Memory_Buffer* mem_buf, uint64_t addr, uint64_t data) {
-    if(!memory_buffer_is_native(mem_buf->end)) {
-       swap_bytes(sizeof(uint64_t), (uint8_t*)&data); 
-    }
-
-    ((uint64_t*)mem_buf->buf)[addr] = data;
-}
 
 uint8_t memory_read_uint8_t(struct Memory_Buffer* mem_buf, uint64_t addr) {
     return mem_buf->buf[addr];
 }
 
 uint16_t memory_read_uint16_t(struct Memory_Buffer* mem_buf, uint64_t addr) {
-    return ((uint16_t*)mem_buf->buf)[addr];
-}
-
-uint32_t memory_read_uint32_t(struct Memory_Buffer* mem_buf, uint64_t addr) {
-    return ((uint32_t*)mem_buf->buf)[addr];
-}
-
-uint64_t memory_read_uint64_t(struct Memory_Buffer* mem_buf, uint64_t addr) {
-    return ((uint64_t*)mem_buf->buf)[addr];
+    if (mem_buf->end == LITTLE_ENDIANESS) {
+        return (uint16_t)(mem_buf->buf[addr]) | ((uint16_t)(mem_buf->buf[addr + 1]) << 8);
+    } else {
+        return ((uint16_t)(mem_buf->buf[addr]) << 8) | (uint16_t)(mem_buf->buf[addr + 1]);
+    }
 }

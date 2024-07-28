@@ -9,6 +9,12 @@
 #include "lwlog/lwlog.h"
 #include "mem/mem.h"
 
+enum Sharp_SM83_Mut_Flag {
+    SET_FLAG,
+    CLEAR_FLAG,
+    MASK_FLAG,
+};
+
 struct Sharp_SM83_CPU_Registers{
     union{
         struct{
@@ -56,6 +62,6 @@ void sharp_sm83_cpu_init(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_b
 void sharp_sm83_cpu_destroy(struct Sharp_SM83_CPU* cpu);
 void sharp_sm83_cpu_cycle(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint64_t cycles);
 bool sharp_sm83_fetch_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint8_t* fetched_opcode);
-uint64_t sharp_sm83_exec_opcode(struct Sharp_SM83_CPU* cpu, uint8_t fetched_opcode, bool cb);
+uint64_t sharp_sm83_exec_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint8_t fetched_opcode, bool cb);
 
 #endif
