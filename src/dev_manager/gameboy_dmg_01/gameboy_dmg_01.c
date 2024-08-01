@@ -28,7 +28,9 @@ void gameboy_dmg_01_destroy(struct Gameboy_DMG_01* gameboy_dmg_01) {
 
 void gameboy_dmg_01_start(struct Gameboy_DMG_01* gameboy_dmg_01) {
     gameboy_dmg_01->cpu->running = true;
-    sharp_sm83_cpu_cycle(gameboy_dmg_01->cpu, gameboy_dmg_01->mem_buf, 104);
+    while(1) {
+        sharp_sm83_cpu_cycle(gameboy_dmg_01->cpu, gameboy_dmg_01->mem_buf, 104);
+    }
     lwlog_info("ran out of cycles");
 }
 

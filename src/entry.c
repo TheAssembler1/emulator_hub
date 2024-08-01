@@ -6,10 +6,9 @@
 
 int main(int argc, const char** argv) {
     struct Gameboy_DMG_01 dev_manager;
+
     gameboy_dmg_01_init(&dev_manager);
-
     gameboy_dmg_01_start(&dev_manager);
-
     gameboy_dmg_01_destroy(&dev_manager);
 
     return 0;

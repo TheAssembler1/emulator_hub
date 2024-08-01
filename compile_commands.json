@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/theassembler1/src/emulator_hub/build",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/entry.c.o -c /home/theassembler1/src/emulator_hub/src/entry.c",
+  "file": "/home/theassembler1/src/emulator_hub/src/entry.c",
+  "output": "CMakeFiles/emulator_hub.dir/src/entry.c.o"
+},
+{
+  "directory": "/home/theassembler1/src/emulator_hub/build",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/mem/mem.c.o -c /home/theassembler1/src/emulator_hub/src/mem/mem.c",
+  "file": "/home/theassembler1/src/emulator_hub/src/mem/mem.c",
+  "output": "CMakeFiles/emulator_hub.dir/src/mem/mem.c.o"
+},
+{
+  "directory": "/home/theassembler1/src/emulator_hub/build",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c.o -c /home/theassembler1/src/emulator_hub/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c",
+  "file": "/home/theassembler1/src/emulator_hub/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c",
+  "output": "CMakeFiles/emulator_hub.dir/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c.o"
+},
+{
+  "directory": "/home/theassembler1/src/emulator_hub/build",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c.o -c /home/theassembler1/src/emulator_hub/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c",
+  "file": "/home/theassembler1/src/emulator_hub/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c",
+  "output": "CMakeFiles/emulator_hub.dir/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c.o"
+}
+]
