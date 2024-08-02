@@ -1,16 +1,17 @@
 #ifndef INTERFACE_MANAGER_H
 #define INTERFACE_MANAGER_H
 
-void interface_manager_init() {
+#include <stdlib.h>
+#include <gtk/gtk.h>
 
-}
+#include "window.h"
 
-void interface_manager_start() {
-  
-}
+typedef struct {
+  const GtkApplication* gtk_app;  
+} Interface_Manager;
 
-void interface_manager_destroy() {
-  
-}
+Interface_Manager* interface_manager_init();
+void interface_manager_start(Interface_Manager* interface_manager, int argc, char** argv);
+void interface_manager_destroy(Interface_Manager* interface_manager);
 
 #endif

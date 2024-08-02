@@ -9,10 +9,12 @@ typedef struct {
   unsigned int w;
   unsigned int h;
   const char* title;
+
+  GtkWidget* gtk_win;
 } Window;
 
-void window_manager_init(Window* win);
-void window_manager_destroy();
+Window* window_init(const char* title, int w, int h, GtkWidget* gtk_win);
+void window_destroy(Window* win);
 
 #endif
 
