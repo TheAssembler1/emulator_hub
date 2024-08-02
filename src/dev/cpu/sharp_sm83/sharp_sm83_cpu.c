@@ -1,14 +1,19 @@
 #include "sharp_sm83_cpu.h"
 
-void sharp_sm83_cpu_init(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf) {
+Sharp_SM83_CPU* sharp_sm83_cpu_init(Memory_Buffer* mem_buf) {
+    Sharp_SM83_CPU* cpu = (Sharp_SM83_CPU*)calloc(1, sizeof(Sharp_SM83_CPU));
     cpu->running = false;
-	memset(&(cpu->regs), 0, sizeof(struct Sharp_SM83_CPU_Registers));
-	cpu->mem_buf = mem_buf;
+    memset(&(cpu->regs), 0, sizeof(Sharp_SM83_CPU_Registers));
+    cpu->mem_buf = mem_buf;
+
+    return cpu;
 }
 
-void sharp_sm83_cpu_destroy(struct Sharp_SM83_CPU* cpu) {}
+void sharp_sm83_cpu_destroy(Sharp_SM83_CPU* cpu) {
+    free(cpu);
+}
 
-void sharp_sm83_cpu_cycle(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint64_t cycles) {
+void sharp_sm83_cpu_cycle(Sharp_SM83_CPU* cpu, Memory_Buffer* mem_buf, uint64_t cycles) {
     while(cpu->running && cycles > 0) {
         lwlog_info("cpu pc register: 0x%x", cpu->regs.pc);
 
@@ -21,7 +26,7 @@ void sharp_sm83_cpu_cycle(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_
     }
 }
 
-bool sharp_sm83_fetch_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint8_t* fetched_opcode) {
+bool sharp_sm83_fetch_opcode(Sharp_SM83_CPU* cpu, Memory_Buffer* mem_buf, uint8_t* fetched_opcode) {
     uint8_t cur_opcode = mem_buf->buf[cpu->regs.pc];
     if(cur_opcode == 0xCB) {
         *fetched_opcode = mem_buf->buf[cpu->regs.pc + 1];
@@ -37,9 +42,9 @@ bool sharp_sm83_fetch_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* m
 #define SHARP_SM83_CPU_HFC_FLAG   0b00100000
 #define SHARP_SM83_CPU_CARRY_FLAG 0b00010000
 
-static void sharp_sm83_set_flags(struct Sharp_SM83_CPU* cpu,
-        enum Sharp_SM83_Mut_Flag z_flag, enum Sharp_SM83_Mut_Flag sub_flag,
-        enum Sharp_SM83_Mut_Flag hfc_flag, enum Sharp_SM83_Mut_Flag carry_flag) {
+static void sharp_sm83_set_flags(Sharp_SM83_CPU* cpu,
+        Sharp_SM83_Mut_Flag z_flag, Sharp_SM83_Mut_Flag sub_flag,
+        Sharp_SM83_Mut_Flag hfc_flag, Sharp_SM83_Mut_Flag carry_flag) {
 
     switch(z_flag) {
         case SET_FLAG:
@@ -119,11 +124,11 @@ static bool carry_sub_uint16_t(uint16_t a, uint16_t b) {
     return (int32_t)(a - b) < 0;
 }
 
-uint64_t sharp_sm83_exec_opcode(struct Sharp_SM83_CPU* cpu, struct Memory_Buffer* mem_buf, uint8_t fetched_opcode, bool cb) {
-    enum Sharp_SM83_Mut_Flag z_flag = MASK_FLAG;
-    enum Sharp_SM83_Mut_Flag sub_flag = MASK_FLAG;
-    enum Sharp_SM83_Mut_Flag hfc_flag = MASK_FLAG;
-    enum Sharp_SM83_Mut_Flag c_flag = MASK_FLAG;
+uint64_t sharp_sm83_exec_opcode(Sharp_SM83_CPU* cpu, Memory_Buffer* mem_buf, uint8_t fetched_opcode, bool cb) {
+    Sharp_SM83_Mut_Flag z_flag = MASK_FLAG;
+    Sharp_SM83_Mut_Flag sub_flag = MASK_FLAG;
+    Sharp_SM83_Mut_Flag hfc_flag = MASK_FLAG;
+    Sharp_SM83_Mut_Flag c_flag = MASK_FLAG;
     uint8_t cycles = 0;
     uint8_t pc_inc = 0;
 

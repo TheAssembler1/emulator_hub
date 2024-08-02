@@ -1,26 +1,32 @@
 [
 {
   "directory": "/home/theassembler1/src/emulator_hub/build",
-  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/entry.c.o -c /home/theassembler1/src/emulator_hub/src/entry.c",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src -isystem /usr/include/gtk-4.0 -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/graphene-1.0 -isystem /usr/lib/x86_64-linux-gnu/graphene-1.0/include -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/SDL2 -mfpmath=sse -msse -msse2 -pthread -D_REENTRANT -o CMakeFiles/emulator_hub.dir/src/entry.c.o -c /home/theassembler1/src/emulator_hub/src/entry.c",
   "file": "/home/theassembler1/src/emulator_hub/src/entry.c",
   "output": "CMakeFiles/emulator_hub.dir/src/entry.c.o"
 },
 {
   "directory": "/home/theassembler1/src/emulator_hub/build",
-  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/mem/mem.c.o -c /home/theassembler1/src/emulator_hub/src/mem/mem.c",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src -isystem /usr/include/gtk-4.0 -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/graphene-1.0 -isystem /usr/lib/x86_64-linux-gnu/graphene-1.0/include -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/SDL2 -mfpmath=sse -msse -msse2 -pthread -D_REENTRANT -o CMakeFiles/emulator_hub.dir/src/mem/mem.c.o -c /home/theassembler1/src/emulator_hub/src/mem/mem.c",
   "file": "/home/theassembler1/src/emulator_hub/src/mem/mem.c",
   "output": "CMakeFiles/emulator_hub.dir/src/mem/mem.c.o"
 },
 {
   "directory": "/home/theassembler1/src/emulator_hub/build",
-  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c.o -c /home/theassembler1/src/emulator_hub/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src -isystem /usr/include/gtk-4.0 -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/graphene-1.0 -isystem /usr/lib/x86_64-linux-gnu/graphene-1.0/include -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/SDL2 -mfpmath=sse -msse -msse2 -pthread -D_REENTRANT -o CMakeFiles/emulator_hub.dir/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c.o -c /home/theassembler1/src/emulator_hub/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c",
   "file": "/home/theassembler1/src/emulator_hub/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c",
   "output": "CMakeFiles/emulator_hub.dir/src/dev/cpu/sharp_sm83/sharp_sm83_cpu.c.o"
 },
 {
   "directory": "/home/theassembler1/src/emulator_hub/build",
-  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src  -o CMakeFiles/emulator_hub.dir/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c.o -c /home/theassembler1/src/emulator_hub/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src -isystem /usr/include/gtk-4.0 -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/graphene-1.0 -isystem /usr/lib/x86_64-linux-gnu/graphene-1.0/include -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/SDL2 -mfpmath=sse -msse -msse2 -pthread -D_REENTRANT -o CMakeFiles/emulator_hub.dir/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c.o -c /home/theassembler1/src/emulator_hub/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c",
   "file": "/home/theassembler1/src/emulator_hub/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c",
   "output": "CMakeFiles/emulator_hub.dir/src/dev_manager/gameboy_dmg_01/gameboy_dmg_01.c.o"
+},
+{
+  "directory": "/home/theassembler1/src/emulator_hub/build",
+  "command": "/usr/bin/cc  -I/home/theassembler1/src/emulator_hub/src -isystem /usr/include/gtk-4.0 -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/libpng16 -isystem /usr/include/graphene-1.0 -isystem /usr/lib/x86_64-linux-gnu/graphene-1.0/include -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/SDL2 -mfpmath=sse -msse -msse2 -pthread -D_REENTRANT -o CMakeFiles/emulator_hub.dir/src/interface/interface_manager.c.o -c /home/theassembler1/src/emulator_hub/src/interface/interface_manager.c",
+  "file": "/home/theassembler1/src/emulator_hub/src/interface/interface_manager.c",
+  "output": "CMakeFiles/emulator_hub.dir/src/interface/interface_manager.c.o"
 }
 ]

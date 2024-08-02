@@ -1,20 +1,22 @@
 #include "gameboy_dmg_01.h"
 
-void gameboy_dmg_01_init(struct Gameboy_DMG_01* gameboy_dmg_01) {
+Gameboy_DMG_01* gameboy_dmg_01_init() {
     lwlog_info("initializing gameboy dmg-01");
-
-    gameboy_dmg_01->cpu = (struct Sharp_SM83_CPU*)malloc(sizeof(struct Sharp_SM83_CPU));
-    gameboy_dmg_01->mem_buf = (struct Memory_Buffer*)malloc(sizeof(struct Memory_Buffer));
+    Gameboy_DMG_01* gameboy_dmg_01 = (Gameboy_DMG_01*)calloc(1, sizeof(Gameboy_DMG_01));
+    gameboy_dmg_01->cpu = (Sharp_SM83_CPU*)calloc(1, sizeof(Sharp_SM83_CPU));
+    gameboy_dmg_01->mem_buf = (Memory_Buffer*)calloc(1, sizeof(Memory_Buffer));
 
     lwlog_info("initializing gameboy dmg-01 cpu");
-    memory_buffer_init(gameboy_dmg_01->mem_buf, GAMEBOY_DMG_01_MEM_SIZE, LITTLE_ENDIANESS);
+    gameboy_dmg_01->mem_buf = memory_buffer_init(GAMEBOY_DMG_01_MEM_SIZE, LITTLE_ENDIANESS);
     lwlog_info("initializing gameboy dmg-01 memory_buffer");
-    sharp_sm83_cpu_init(gameboy_dmg_01->cpu, gameboy_dmg_01->mem_buf);
+    gameboy_dmg_01->cpu = sharp_sm83_cpu_init(gameboy_dmg_01->mem_buf);
     lwlog_info("loading boot rom for gameboy dmg-01");
     gameboy_dmg_01_load_boot_rom(gameboy_dmg_01);
+
+    return gameboy_dmg_01;
 }
 
-void gameboy_dmg_01_destroy(struct Gameboy_DMG_01* gameboy_dmg_01) {
+void gameboy_dmg_01_destroy(Gameboy_DMG_01* gameboy_dmg_01) {
     lwlog_info("destroying gameboy dmg-01");
 
     lwlog_info("destroying gameboy dmg-01 cpu");
@@ -24,9 +26,10 @@ void gameboy_dmg_01_destroy(struct Gameboy_DMG_01* gameboy_dmg_01) {
 
     free(gameboy_dmg_01->cpu);
     free(gameboy_dmg_01->mem_buf);
+    free(gameboy_dmg_01);
 }
 
-void gameboy_dmg_01_start(struct Gameboy_DMG_01* gameboy_dmg_01) {
+void gameboy_dmg_01_start(Gameboy_DMG_01* gameboy_dmg_01) {
     gameboy_dmg_01->cpu->running = true;
     while(1) {
         sharp_sm83_cpu_cycle(gameboy_dmg_01->cpu, gameboy_dmg_01->mem_buf, 104);
@@ -34,7 +37,7 @@ void gameboy_dmg_01_start(struct Gameboy_DMG_01* gameboy_dmg_01) {
     lwlog_info("ran out of cycles");
 }
 
-void gameboy_dmg_01_load_boot_rom(struct Gameboy_DMG_01* gameboy_dmg_01) {
+void gameboy_dmg_01_load_boot_rom(Gameboy_DMG_01* gameboy_dmg_01) {
     char cwd[GAMEBOY_DMG_01_BOOT_ROM_PATH_MAX_SIZE];
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
         lwlog_info("current working directory: %s", cwd);
